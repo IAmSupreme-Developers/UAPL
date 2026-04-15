@@ -72,7 +72,6 @@ If a developer can't make their first payment in under 10 minutes, we've failed.
 |---|---|---|
 | MTN Mobile Money | CM, GH, RW, UG, CI, BJ | 🔄 In Development |
 | Orange Money | CM, SN, CI, ML, BF | 🔄 In Development |
-| Campay | CM | 🔄 In Development |
 | M-Pesa (Safaricom) | KE, TZ | 🔄 In Development |
 | Flutterwave | 20+ countries | 🗓️ Planned |
 | Stripe | Global (cards) | 🗓️ Planned |
@@ -183,13 +182,43 @@ UAPL SDK          ← One integration. That's all you write.
    ▼
 UAPL Server       ← Routes, retries, real-time updates, failover
    │
+   ▼
+Licensed Layer    ← Aggregators with telco relationships (invisible to you)
+   │
    ├── MTN MoMo
    ├── Orange Money
    ├── M-Pesa
    └── + more
 ```
 
-The server handles provider selection, automatic failover, webhook processing, and real-time status delivery. Your app only ever talks to UAPL.
+The server handles provider selection, automatic failover, webhook processing, and real-time status delivery. Your app only ever talks to UAPL. The licensed infrastructure layer underneath is completely invisible to the developer.
+
+---
+
+## Aggregator vs True UAPL
+
+Most "unified payment" projects stop at aggregation — they connect multiple APIs but leave developers dealing with inconsistent responses, mixed error formats, and no intelligent failure handling. They remain optional tools, never foundational infrastructure.
+
+UAPL is built to cross that line.
+
+| | Aggregator | UAPL |
+|---|---|---|
+| Purpose | Connect APIs | Unify systems |
+| Developer experience | Mixed, provider-dependent | Consistent, always the same |
+| Failure handling | Basic | Intelligent routing + automatic alternatives |
+| Ecosystem role | Optional service | Infrastructure you stop thinking about |
+
+The goal is simple: **developers stop thinking about payment providers entirely.** They think "UAPL" and money works. That's the line between a tool and infrastructure.
+
+---
+
+## Why CEMAC First
+
+Flutterwave, Stripe, and Paystack dominate Nigeria, Ghana, Kenya, and South Africa. The CEMAC zone — Cameroon, Senegal, Côte d'Ivoire, Mali, Burkina Faso, Congo — has been largely ignored. Over 50 million people, dominant mobile money adoption through MTN and Orange, and almost no developer-friendly payment infrastructure.
+
+The difficulty that keeps large competitors out is exactly what UAPL is built to solve. We go there first, own the developer community, and build the infrastructure layer before anyone else decides it's worth their attention.
+
+Geographic dominance before geographic expansion — own CEMAC deeply, then expand into East and West Africa from a position of strength.
 
 ---
 
